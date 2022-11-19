@@ -16,9 +16,9 @@ jobs:
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
           echo "${{github.token}}"
-      - name: Simple JS Action
+      - name: greet
         uses: actions/hello-world-javascript-action@main
         with:
           who-to-greet: John
       - name: Log Greeting Time
-        run: echo "${{steps}}"
+        run: echo "${{steps.greet.outputs.time}}"
