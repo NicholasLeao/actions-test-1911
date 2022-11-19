@@ -22,4 +22,4 @@ jobs:
         with:
           who-to-greet: John
       - name: Log Greeting Time
-        run: echo "${{steps.greet.outputs.time}}"
+        run: echo "${{join(steps.outputs.greet.*, "\n")}}"
