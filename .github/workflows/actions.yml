@@ -1,5 +1,14 @@
 name: Actions Workflow
-on: [push]
+on:
+  push:
+    branches:
+      - master
+      - "feature/*" #feature/Test
+      - "feature/**" #feature/Test/Test
+    tags:
+      - v1.*
+    paths:
+      - "**.js"
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
@@ -22,5 +31,4 @@ jobs:
         with:
           who-to-greet: John
       - name: Log Greeting Time
-        # run: echo "${{join(steps.greet.outputs.*, '\n')}}"
-        run: echo ${{console.log(2*5)}}
+        run: echo "${{join(steps.greet.outputs.*, '\n')}}"
